@@ -1,0 +1,22 @@
+{
+	"sad_words": ["sad", "depressed", "unhappy", "cry", "die", "sed", "WTF"],
+	"angry_words": ["anger", "boiling", "fire", "💢", "😡", "🤬"],
+
+	"starter_encounrge": [
+		"Cheer up Buddy!",
+		"Hang in there",
+		"You are great person!",
+		"Be Ready Tackle Problems!",
+		"Be Calm and happy",
+		"Be Cool Buddy",
+		"The bad news is time flies",
+		"Nothing is impossible"
+	],
+
+	"anger_cool": [
+		"Anger is the path to the dark side , so cool down and play with me!",
+		"Anger makes you smaller",
+		"Your mind is like this water my friend",
+		"You're only hurting yourself Cool down!!"
+	]
+}

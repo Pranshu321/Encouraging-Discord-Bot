@@ -7,33 +7,24 @@ import os
 from discord.ext import commands
 import json
 import random
+import sys
+import traceback
+import asyncio
+from distutils import extension
 
 bot = discord.Client()
 
-sad_words = ["sad", "depressed", "unhappy", "cry", "die", "sed", "WTF"]
-angry_words = ["anger", "boiling", "fire", "💢", "😡", "🤬"]
-
-starter_encounrge = [
-    "Cheer up Buddy!",
-    "Hang in there",
-    "You are great person!",
-    "Be Ready Tackle Problems!",
-    "Be Calm and happy",
-    "Be Cool Buddy",
-    "The bad news is time flies",
-    "Nothing is impossible",
-]
-
-anger_cool = [
-    "Anger is the path to the dark side , so cool down and play with me!",
-    "Anger makes you smaller",
-    "Your mind is like this water my friend",
-    "You're only hurting yourself Cool down!!",
-]
 
 with open("./config.json", "r") as configjsonFile:
     configData = json.load(configjsonFile)
     TOKEN = configData["DISCORD_TOKEN"]
+
+with open("./mood.json", "r") as moodjsonFile:
+    moodData = json.load(moodjsonFile)
+    sedi = moodData["sad_words"]
+    anger = moodData["angry_words"]
+    sedi_en = moodData["starter_encounrge"]
+    anger_en = moodData["anger_cool"]
 
 
 def get_quote():
@@ -51,11 +42,11 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     msg = message.content
-    if any(word in msg for word in sad_words):
-        await message.channel.send(random.choice(starter_encounrge))
+    if any(word in msg for word in sedi):
+        await message.channel.send(random.choice(sedi_en))
 
-    if any(word in msg for word in angry_words):
-        await message.channel.send(random.choice(anger_cool))
+    if any(word in msg for word in anger):
+        await message.channel.send(random.choice(anger_en))
 
     if message.content.startswith("!hi"):
         await message.channel.send("Hello , This QuoMoto Bot")
@@ -79,6 +70,5 @@ async def on_message(message):
     if message.content.startswith("!AddSedBooster"):
 
         await message.channel.send("New Sed Enhancer Method Added :) ")
-
 
 bot.run(TOKEN)
